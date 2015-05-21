@@ -8,7 +8,7 @@ namespace EPi.QueryHandler
     {
         public StartPageViewModel Handle(StartPageQuery query)
         {
-            return new StartPageViewModel();
+            return new StartPageViewModel(query.CurrentPage);
         }
     }
 }

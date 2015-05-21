@@ -20,7 +20,7 @@ namespace EPi.Controllers
         [HttpGet]
         public ActionResult Index(StartPage currentPage)
         {
-            var model = this.queryProcessor.Process(new StartPageQuery());
+            var model = this.queryProcessor.Process(new StartPageQuery(currentPage));
 
             return View(model);
         }
