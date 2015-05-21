@@ -11,6 +11,7 @@ namespace CqFramework.Implementation.StructureMap
             {
                 x.For<IQueryProcessor>().Use<QueryProcessor>();
                 x.For<ICommandDispatcher>().Use<CommandDispatcher>();
+                x.For<IContainer>().Use(ObjectFactory.Container);
                 x.AddRegistry(new QueryHandlerImplementationsRegistry());
                 x.AddRegistry(new CommandHandlerImplementationsRegistry());
             });
