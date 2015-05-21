@@ -3,3 +3,8 @@ C:\Projects\cqframework\cqframework\CqFramework\CqFramework\bin\Debug\CqFramewor
 C:\Projects\cqframework\cqframework\CqFramework\CqFramework\obj\Debug\CqFramework.csprojResolveAssemblyReference.cache
 C:\Projects\cqframework\cqframework\CqFramework\CqFramework\obj\Debug\CqFramework.dll
 C:\Projects\cqframework\cqframework\CqFramework\CqFramework\obj\Debug\CqFramework.pdb
+C:\Projects\EPi\CqFramework\bin\Debug\CqFramework.dll
+C:\Projects\EPi\CqFramework\bin\Debug\CqFramework.pdb
+C:\Projects\EPi\CqFramework\obj\Debug\CqFramework.csprojResolveAssemblyReference.cache
+C:\Projects\EPi\CqFramework\obj\Debug\CqFramework.dll
+C:\Projects\EPi\CqFramework\obj\Debug\CqFramework.pdb

@@ -1,0 +1,10 @@
+C:\Projects\EPi\CqFramework.Implementation.Structuremap\bin\Debug\CqFramework.Implementation.StructureMap.dll
+C:\Projects\EPi\CqFramework.Implementation.Structuremap\bin\Debug\CqFramework.Implementation.StructureMap.pdb
+C:\Projects\EPi\CqFramework.Implementation.Structuremap\bin\Debug\StructureMap.dll
+C:\Projects\EPi\CqFramework.Implementation.Structuremap\bin\Debug\StructureMap.pdb
+C:\Projects\EPi\CqFramework.Implementation.Structuremap\bin\Debug\StructureMap.xml
+C:\Projects\EPi\CqFramework.Implementation.Structuremap\obj\Debug\CqFramework.Implementation.Structuremap.csprojResolveAssemblyReference.cache
+C:\Projects\EPi\CqFramework.Implementation.Structuremap\obj\Debug\CqFramework.Implementation.StructureMap.dll
+C:\Projects\EPi\CqFramework.Implementation.Structuremap\obj\Debug\CqFramework.Implementation.StructureMap.pdb
+C:\Projects\EPi\CqFramework.Implementation.Structuremap\bin\Debug\CqFramework.dll
+C:\Projects\EPi\CqFramework.Implementation.Structuremap\bin\Debug\CqFramework.pdb

@@ -45,6 +45,8 @@
     <Compile Include="IQuery.cs" />
     <Compile Include="IQueryHandler`2.cs" />
     <Compile Include="IQueryProcessor.cs" />
+    <Compile Include="NoCommandHandlerRegisteredException.cs" />
+    <Compile Include="NoQueryHandlerRegisteredException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
