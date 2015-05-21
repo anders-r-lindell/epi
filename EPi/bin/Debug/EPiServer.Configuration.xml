@@ -1000,6 +1000,12 @@
             around Uri properties.
             </summary>
         </member>
+        <member name="P:EPiServer.Configuration.EPiServerSection.ConfigurationInstance">
+            <summary>
+            Gets and sets the current configuration to use
+            </summary>
+            <exclude/>
+        </member>
         <member name="P:EPiServer.Configuration.EPiServerSection.Sites">
             <summary>
             reference collection

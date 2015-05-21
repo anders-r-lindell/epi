@@ -107,8 +107,7 @@
         <member name="P:EPiServer.XForms.Parsing.XFormsFragment.ValidationReference">
             <summary>
             To be sure we have a unique validation reference
-            Normally it should be reference or name of felt but for avoiding to have conflict with other xform felt we introduce
-            this felt which is unique.
+            Normally it should be reference or name of field but to avoiding to have conflict with other xform a unique field is used
             </summary>
         </member>
         <member name="M:EPiServer.XForms.Parsing.InputFragment.ParseFragment(System.Collections.Generic.Stack{EPiServer.HtmlParsing.HtmlFragment},EPiServer.HtmlParsing.HtmlFragment)">

@@ -948,6 +948,9 @@
             <param name="action">The action.</param>
             <param name="changedBy">The changed by.</param>
         </member>
+        <member name="T:EPiServer.MirroringService.ChangeLog.MirroringChangeLogFilter">
+            <exclude/>
+        </member>
         <member name="M:EPiServer.MirroringService.ChangeLog.MirroringChangeLogFilter.GetFileChanges(System.Int64)">
             <summary>
             Gets relevant file changes for current mirroring channel

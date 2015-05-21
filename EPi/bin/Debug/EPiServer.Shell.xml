@@ -3530,6 +3530,12 @@
             Executes the action corresponding to the http method in the request.
             </summary>
         </member>
+        <member name="M:EPiServer.Shell.Services.Rest.RestControllerBase.GetActionName">
+            <summary>
+            Get the action method to process
+            </summary>
+            <returns>The action method by checking both HTTP method and special header "X-Http-Method-Override"</returns>
+        </member>
         <member name="M:EPiServer.Shell.Services.Rest.RestControllerBase.Rest(System.Object)">
             <summary>
             Helper method creating a <see cref="T:EPiServer.Shell.Services.Rest.RestResult"/> with the specified data.
@@ -3544,6 +3550,21 @@
             <param name="data">The data to be filtered and then return in the response.</param>
             <param name="range">The item range to apply to the given data and apply to the response header.</param>
             <returns>A Rest Action result with the filtered data and Content-Range header.</returns>
+        </member>
+        <member name="M:EPiServer.Shell.Services.Rest.RestControllerBase.BeginExecute(System.Web.Routing.RequestContext,System.AsyncCallback,System.Object)">
+            <summary>
+            Executes the specified request context.
+            </summary>
+            <param name="requestContext">The request context.</param>
+            <param name="callback">The asynchronous callback method.</param>
+            <param name="state">The state.</param>
+            <returns>The status of the asynchronous operation.</returns>
+        </member>
+        <member name="M:EPiServer.Shell.Services.Rest.RestControllerBase.EndExecute(System.IAsyncResult)">
+            <summary>
+             Ends the asynchronous operation.
+            </summary>
+            <param name="asyncResult">The asynchronous result.</param>
         </member>
         <member name="P:EPiServer.Shell.Services.Rest.RestControllerBase.HttpContext">
             <summary>
@@ -3564,6 +3585,18 @@
             <summary>
             Gets or sets the action invoker used when invoking the controller rest action.
             </summary>
+            <value>By default of type <see cref="T:EPiServer.Shell.Services.Rest.RestControllerActionInvoker"/></value>
+        </member>
+        <member name="P:EPiServer.Shell.Services.Rest.RestControllerBase.DisableAsyncSupport">
+            <summary>
+            Derived classes can override this flag and set to true if they need the pre-MVC 4 ExecuteCore to be called.
+            </summary>
+            <value>Returns <c>true</c> when <see cref="P:EPiServer.Shell.Services.Rest.RestControllerBase.ActionInvoker"/> is <see cref="T:System.Web.Mvc.Async.IAsyncActionInvoker"/></value>
+        </member>
+        <member name="P:EPiServer.Shell.Services.Rest.RestControllerBase.AsyncManager">
+            <summary>
+            Gets the asynchronous manager object.
+            </summary>
         </member>
         <member name="T:EPiServer.Shell.Services.Rest.RestHeaderValuesProvider">
             <summary>
@@ -3582,7 +3615,7 @@
         </member>
         <member name="T:EPiServer.Shell.Services.Rest.RestHttpHandler">
             <summary>
-            A http handler 
+            A http handler that implements Rest Controllers
             </summary>
         </member>
         <member name="M:EPiServer.Shell.Services.Rest.RestHttpHandler.#ctor(System.Web.Routing.RequestContext)">
@@ -3603,6 +3636,30 @@
             </summary>
             <param name="httpContext">The HTTP context.</param>
         </member>
+        <member name="M:EPiServer.Shell.Services.Rest.RestHttpHandler.BeginProcessRequest(System.Web.HttpContext,System.AsyncCallback,System.Object)">
+            <summary>
+            Registers handler for async notification
+            </summary>
+            <param name="context">The context</param>
+            <param name="cb">The callback</param>
+            <param name="extraData">The extra data</param>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Shell.Services.Rest.RestHttpHandler.BeginProcessRequest(System.Web.HttpContextBase,System.AsyncCallback,System.Object)">
+            <summary>
+            Registers handler for async notification
+            </summary>
+            <param name="context">The context</param>
+            <param name="callback">The callback</param>
+            <param name="extraData">The extra data</param>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Shell.Services.Rest.RestHttpHandler.EndProcessRequest(System.IAsyncResult)">
+            <summary>
+            Ends the request
+            </summary>
+            <param name="result"></param>
+        </member>
         <member name="M:EPiServer.Shell.Services.Rest.RestHttpHandler.ValidateAntiForgeryToken(System.Web.HttpContextBase)">
             <summary>
             Validates the Cross site request anti forgery token sent in the header with the token stored in a cookie.
@@ -3622,6 +3679,11 @@
         <member name="P:EPiServer.Shell.Services.Rest.RestHttpHandler.RequestContext">
             <summary>
             The context in which the request is executed.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Shell.Services.Rest.RestHttpHandler.Controller">
+            <summary>
+            The controller in which the request is executed.
             </summary>
         </member>
         <member name="P:EPiServer.Shell.Services.Rest.RestHttpHandler.IsReusable">
@@ -3906,6 +3968,12 @@
             </summary>
             <param name="attributedType">The <see cref="T:System.Type"/> of the component.</param>
             <returns>A new instance of a <see cref="T:EPiServer.Shell.ViewComposition.DefaultComponentDefinition"/>.</returns>
+        </member>
+        <member name="P:EPiServer.Shell.ViewComposition.ComponentAttribute.AllowedRoles">
+            <summary>
+            Gets or sets the list of roles that are allowed to use this component.
+            </summary>
+            <value>The role list .</value>
         </member>
         <member name="P:EPiServer.Shell.ViewComposition.ComponentAttribute.WidgetType">
             <summary>
@@ -5905,12 +5973,12 @@
         </member>
         <member name="T:EPiServer.Shell.Modules.ModuleInitializer">
             <summary>
-            This class whole purpose in life is to initializes modules while beeing internally used by EPiServer.
+            This class whole purpose in life is to initializes modules while being internally used by EPiServer.
             </summary>
         </member>
         <member name="M:EPiServer.Shell.Modules.ModuleInitializer.#ctor(System.Web.Routing.IRouteHandler,System.Web.Routing.RouteCollection,System.Web.Mvc.ViewEngineCollection,System.Web.Hosting.VirtualPathProvider,EPiServer.Shell.Configuration.EPiServerShellSection)">
             <summary>
-            Creates a new instnace of the <see cref="T:EPiServer.Shell.Modules.ModuleInitializer"/> class.
+            Creates a new instance of the <see cref="T:EPiServer.Shell.Modules.ModuleInitializer"/> class.
             </summary>
             <param name="routeHandler">The route handler</param>
             <param name="routes">The route collection</param>
@@ -6122,7 +6190,14 @@
             Initializes a new instance of the <see cref="T:EPiServer.Shell.ObjectEditing.ExtendedDataAnnotationsModelMetadataProvider"/> class.
             </summary>
             <param name="localizationService">The localization service.</param>
-            <param name="httpContextBase">HttpContextBase</param>B
+            <param name="httpContextBase">HttpContextBase</param>
+        </member>
+        <member name="M:EPiServer.Shell.ObjectEditing.ExtendedDataAnnotationsModelMetadataProvider.#ctor(EPiServer.Framework.Localization.LocalizationService,EPiServer.ServiceLocation.ServiceAccessor{System.Web.HttpContextBase})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Shell.ObjectEditing.ExtendedDataAnnotationsModelMetadataProvider"/> class.
+            </summary>
+            <param name="localizationService">The localization service.</param>
+            <param name="httpContext">Access to the current HTTP context</param>
         </member>
         <member name="M:EPiServer.Shell.ObjectEditing.ExtendedDataAnnotationsModelMetadataProvider.CreateMetadata(System.Collections.Generic.IEnumerable{System.Attribute},System.Type,System.Func{System.Object},System.Type,System.String)">
             <summary>
@@ -6611,6 +6686,14 @@
             <param name="localizationService">The localization service.</param>
             <param name="httpContextBase">HttpContextBase</param>
         </member>
+        <member name="M:EPiServer.Shell.ObjectEditing.ExtensibleMetadataProvider.#ctor(EPiServer.Shell.ObjectEditing.MetadataHandlerRegistry,EPiServer.Framework.Localization.LocalizationService,EPiServer.ServiceLocation.ServiceAccessor{System.Web.HttpContextBase})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Shell.ObjectEditing.ExtensibleMetadataProvider"/> class.
+            </summary>
+            <param name="metadataHandlerRegistry">The metadata registry.</param>
+            <param name="localizationService">The localization service.</param>
+            <param name="httpContext">Access to the current HTTP context</param>
+        </member>
         <member name="M:EPiServer.Shell.ObjectEditing.ExtensibleMetadataProvider.CreateMetadata(System.Collections.Generic.IEnumerable{System.Attribute},System.Type,System.Func{System.Object},System.Type,System.String)">
             <summary>
             Gets the metadata for the specified property.
@@ -7058,12 +7141,12 @@
             <summary>
             Gets and sets the current configuration to use
             </summary>
+            <exclude/>
         </member>
         <member name="P:EPiServer.Shell.Configuration.EPiServerShellSection.Instance">
             <summary>
             Gets the instance of the <see cref="T:EPiServer.Shell.Configuration.EPiServerShellSection"/> section
             </summary>
-            <remarks>Returns null if the section isn't found</remarks>
         </member>
         <member name="T:EPiServer.Shell.Dashboard.DashboardEventArgs">
             <summary>
@@ -11425,6 +11508,11 @@
             Called when the action is executing. Will filter make sure that the result is zipped.
             </summary>
             <param name="filterContext">The context for the action.</param>
+        </member>
+        <member name="P:EPiServer.Shell.Web.Mvc.CompressFilterAttribute.Enabled">
+            <summary>
+            Support testing without using static setting
+            </summary>
         </member>
         <member name="T:EPiServer.Shell.Gadgets.Gadget">
             <summary>

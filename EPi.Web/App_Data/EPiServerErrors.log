@@ -3395,3 +3395,16 @@ System.MissingMethodException: Method not found: 'EPiServer.ServiceLocation.Inje
    at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
    at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
 2015-05-21 15:02:41,000 [233] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-21 15:24:31,078 [1] ERROR EPiServer.Framework.Initialization.InitializationEngine: Initialize action failed for Initialize on class EPiServer.Data.DataInitialization, EPiServer.Data, Version=8.6.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7
+System.NotSupportedException: The database has not been updated to the version '7018.0', current database version is '7016.0'. Update the database by running the cmdlet 'update-epidatabase' in the package manager console.
+   at EPiServer.Data.DatabaseVersionValidator.ThrowUpdateDatabaseException(Version databaseVersion, Version codeVersion)
+   at EPiServer.Data.DatabaseVersionValidator.ValidateDatabaseVersion(Version supportedVersion)
+   at EPiServer.Data.DataInitialization.Initialize(InitializationEngine context)
+   at EPiServer.Framework.Initialization.ModuleNode.Execute(Action a, String key)
+   at EPiServer.Framework.Initialization.InitializationEngine.InitializeModules()
+System.NotSupportedException: The database has not been updated to the version '7018.0', current database version is '7016.0'. Update the database by running the cmdlet 'update-epidatabase' in the package manager console.
+   at EPiServer.Data.DatabaseVersionValidator.ThrowUpdateDatabaseException(Version databaseVersion, Version codeVersion)
+   at EPiServer.Data.DatabaseVersionValidator.ValidateDatabaseVersion(Version supportedVersion)
+   at EPiServer.Data.DataInitialization.Initialize(InitializationEngine context)
+   at EPiServer.Framework.Initialization.ModuleNode.Execute(Action a, String key)
+   at EPiServer.Framework.Initialization.InitializationEngine.InitializeModules()

@@ -36,6 +36,29 @@
             Indicate if it is competed or nott
             </summary>
         </member>
+        <member name="T:EPiServer.Async.AsyncPaginationResult`1">
+            <summary>
+            Result from an async paginated method.
+            </summary>
+            <typeparam name="T">The type of individual items in the paginated result.</typeparam>
+        </member>
+        <member name="M:EPiServer.Async.AsyncPaginationResult`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Int64)">
+            <summary>
+            Creates a new instance of .Wait()
+            </summary>
+            <param name="pagedResult">The current paged result</param>
+            <param name="totalCount">The total number of matched result</param>
+        </member>
+        <member name="P:EPiServer.Async.AsyncPaginationResult`1.PagedResult">
+            <summary>
+            The current result set in the pagination.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Async.AsyncPaginationResult`1.TotalCount">
+            <summary>
+            Total number of matched results.
+            </summary>
+        </member>
         <member name="T:EPiServer.Async.TaskEventArgs">
             <summary>
             NOTE: This is a pre-release API that is UNSTABLE and might not satisfy the compatibility requirements as denoted by its associated normal version.
@@ -1253,6 +1276,57 @@
             <param name="now">The current time/date stamp.</param>
             <returns>The object if it is valid, otherwise null.</returns>
         </member>
+        <member name="T:EPiServer.Framework.Configuration.ConfigurationSource">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            Exposes the global <see cref="T:EPiServer.Framework.Configuration.IConfigurationSource"/> and events to listen to changes.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="E:EPiServer.Framework.Configuration.ConfigurationSource.SourceChanged">
+            <summary>
+            Triggered when <see cref="P:EPiServer.Framework.Configuration.ConfigurationSource.Instance"/> is assigned a new value
+            </summary>
+        </member>
+        <member name="P:EPiServer.Framework.Configuration.ConfigurationSource.Instance">
+            <summary>
+            Global configuration source for EPiServer infrastructure
+            </summary>
+        </member>
+        <member name="T:EPiServer.Framework.Configuration.IConfigurationSource">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            Reads configuration sections.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:EPiServer.Framework.Configuration.IConfigurationSource.Get``1(System.String)">
+            <summary>
+            Reads the configuration by path
+            </summary>
+            <typeparam name="T">The type of the configuration</typeparam>
+            <param name="path">The path to the configuration</param>
+            <returns>The configuration or <c>null</c> if not found</returns>
+        </member>
+        <member name="T:EPiServer.Framework.Configuration.ConfigurationManagerSource">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            Reads configuration from <see cref="T:System.Configuration.ConfigurationManager"/>.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:EPiServer.Framework.Configuration.FileConfigurationSource">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            Load a writable configuration from the configuration file specified by the current <see cref="T:System.AppDomain"/>.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="P:EPiServer.Framework.Configuration.FileConfigurationSource.ConfigurationInstance">
+            <summary>
+            Backing configuration instance
+            </summary>
+        </member>
         <member name="T:EPiServer.Framework.Configuration.ClientResourcesElement">
             <summary>
             A configuration element for the client resources
@@ -1318,6 +1392,7 @@
             <summary>
             Gets and sets the current configuration to use
             </summary>
+            <exclude/>
         </member>
         <member name="P:EPiServer.Framework.Configuration.EPiServerFrameworkSection.Instance">
             <summary>
@@ -1331,6 +1406,48 @@
             Default value is 'modulesbin'.
             </summary>
             <remarks>This path should also be specified in configuration/runtime/assemblyBinding/probing section in privatePath attribute</remarks>.
+        </member>
+        <member name="T:EPiServer.Framework.Configuration.RestartMode">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            Defines how the application should be restarted
+            </summary>
+            <exclude/>
+        </member>
+        <member name="F:EPiServer.Framework.Configuration.RestartMode.None">
+            <summary>
+            Just saves configuration, restart might be triggered by the runtime depending on configuration source restart on external changes setting
+            </summary>
+        </member>
+        <member name="F:EPiServer.Framework.Configuration.RestartMode.ThisApplicationOnly">
+            <summary>
+            Force a restart by unloading the current appdomain
+            </summary>
+        </member>
+        <member name="F:EPiServer.Framework.Configuration.RestartMode.AllApplications">
+            <summary>
+            Touch configuration file/web.config to trigger a restart even though a configuration source is being used
+            </summary>
+        </member>
+        <member name="T:EPiServer.Framework.Configuration.GlobalConfigurationManager">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            Helper methods to load and save configuration files
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:EPiServer.Framework.Configuration.GlobalConfigurationManager.Save(System.Configuration.Configuration,EPiServer.Framework.Configuration.RestartMode)">
+            <summary>
+            Save configuration to the file system based on the path of the application domain configuration file
+            </summary>
+            <param name="configuration"></param>
+            <param name="restartMode"></param>
+        </member>
+        <member name="M:EPiServer.Framework.Configuration.GlobalConfigurationManager.Load">
+            <summary>
+            Load configuration file from the file system based on the application domain configuration file
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:EPiServer.Framework.Configuration.LicensingElement">
             <summary>
@@ -9604,9 +9721,9 @@
         </member>
         <member name="F:EPiServer.Framework.Validator.DefaultMultipleEmailRegexString">
             <summary>
-            The default string used for validation of email adresses.
+            The default string used for validation of multiple email adresseses.
             </summary>
-            <remarks>The difference between this and <see cref="P:EPiServer.Framework.Validator.EmailRegexString"/> is that the later can be changed during the lifetime of the application.</remarks>
+            <remarks>The difference between this and <see cref="P:EPiServer.Framework.Validator.MultipleEmailRegexString"/> is that the later can be changed during the lifetime of the application.</remarks>
         </member>
         <member name="M:EPiServer.Framework.Validator.ThrowIfNull(System.String,System.Object)">
             <summary>

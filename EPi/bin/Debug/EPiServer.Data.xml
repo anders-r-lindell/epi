@@ -4,6 +4,228 @@
         <name>EPiServer.Data</name>
     </assembly>
     <members>
+        <member name="T:EPiServer.Data.IAsyncDatabaseHandler">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
+            <exclude />
+        </member>
+        <member name="T:EPiServer.Data.IDatabaseHandler">
+            <summary>
+            Interface for common database operations such as executing stored procedures and transaction management
+            </summary>
+            <remarks>
+            <para>
+            This interface is used in all APIs that require database access. The implementation of this interface is defined by <see cref="T:EPiServer.Data.DataInitialization"/> when
+            the application is starting. The IDatabaseHandler implementation is managed by the StructureMap container. It is configured to use a scope (HybridOrThreadLocal)
+            that will ensure that the same handler instance will be returned throughout each request.
+            </para>
+            <para>
+            Best practice is to never call into the database schema defined by EPiServer since backwards compatibility is not guaranteed. You should use this
+            interface when accessing custom tables and want to participate in the shared connnection and transaction handling when doing so.
+            </para>
+            <para>
+            The <see cref="M:Execute"/> and <see cref="M:ExecuteTransaction"/> methods should be the main way of executing your database code. Both methods
+            takes an Action method as their only argument and it is this method that should create and execute database commands. Always use 
+            <see cref="M:ExecuteTransaction"/> when calling stored procedures that does modifications to the database; using <see cref="M:Execute"/> for this
+            purpose could cause problems since the database handler has no way of detecting transactions implicitly created at the database level. There are two overloads
+            <see cref="M:Execute{TResult}"/> and <see cref="M:ExecuteTransaction{TResult}"/> that allow for a return value from the method in the argument.
+            </para>
+            <para>
+            Because multiple calls on the same connection are supported (Multiple Active Result Sets) it is very important to dispose any DbDataReader instances returned.
+            The preferred way of handling this is the using statement.
+            </para>
+            </remarks>
+            <example>
+            <para>
+            The following are examples on usage for the most common tasks. Note that the first three examples are using extension methods that are specific to calling stored procedures.
+            The extension methods shown here will create a command object, automatically resolve the parameters for the procedure by querying the database, set the parameter values 
+            to the values in the params argument and finally execute the command query.
+            </para>
+            <para>
+            Getting values using a data reader
+            </para>
+            <code source="../CodeSamples/EPiServer.Data/IDatabaseHandler.cs" region="GettingValuesUsingADataReader" lang="cs"/>
+            <para>
+            Executing a scalar query
+            </para>
+            <code source="../CodeSamples/EPiServer.Data/IDatabaseHandler.cs" region="ExecutingAScalarQuery" lang="cs"/>
+            <para>
+            Executing a non-query command
+            </para>
+            <code source="../CodeSamples/EPiServer.Data/IDatabaseHandler.cs" region="ExecutingANonQueryCommand" lang="cs"/>
+            <para>
+            Constructing a more complex database command
+            </para>
+            <code source="../CodeSamples/EPiServer.Data/IDatabaseHandler.cs" region="ConstructingAMoreComplexDatabaseCommand" lang="cs"/>
+            </example>
+        </member>
+        <member name="M:EPiServer.Data.IDatabaseHandler.Execute``1(System.Func{``0})">
+            <summary>
+            Opens a connection and executes the <see cref="T:System.Func`1"/> with access to the open connection
+            </summary>
+            <typeparam name="TResult">A return type</typeparam>
+            <param name="action">The code that will execute within the open connection</param>
+            <remarks>
+            <para>
+            This method will implicitly open and close the connection when exiting the current scope (or the outermost scope if nested). If the action method throws
+            any kind of exception, the connection will be closed before the exception is rethrown.
+            </para>
+            <para>
+            If you are nesting calls to the Execute and/or ExecuteTransaction methods these methods will reuse any already existing connection and/or transaction. The exception is
+            if you call ExecuteTransaction inside an Execute scope (which is not in turn inside an ExecuteTransaction scope), in this case a new connection will be opened
+            and the transaction created in the new connection.
+            </para>
+            <para>See the class definition <see cref="T:EPiServer.Data.IDatabaseHandler"/> for example usage.</para>
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Data.IDatabaseHandler.Execute(System.Action)">
+            <summary>
+            Opens a connection and executes the <see cref="T:System.Action"/> with access to the open connection
+            </summary>
+            <param name="action">The code that will execute within the open connection</param>
+            <remarks>
+            <para>
+            This method will implicitly open and close the connection when exiting the current scope or the outermost scope if nested. If the action method throws
+            any kind of exception, the connection will be closed before the exception is rethrown.
+            </para>
+            <para>
+            If you are nesting calls to the Execute and/or ExecuteTransaction these methods will reuse any already existing connection and/or transaction. The exception is
+            if you call ExecuteTransaction inside an Execute scope (which is not in turn inside an ExecuteTransaction scope), in this case a new connection will be opened
+            and the transaction created in the new connection.
+            </para>
+            <para>See the class definition <see cref="T:EPiServer.Data.IDatabaseHandler"/> for example usage.</para>
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Data.IDatabaseHandler.ExecuteTransaction(System.Action)">
+            <summary>
+            Opens a connection and transaction and executes the <see cref="T:System.Action"/> with access to the open connection
+            </summary>
+            <param name="action">The code that will execute within the connection and transaction</param>
+            <remarks>
+            <para>
+            This method will implicitly commit the current transaction and close the connection when exiting the current scope (or the outermost scope if nested). If the
+            action method throws any kind of exception, the transaction will be rolled back the connection closed before the exception is rethrown.
+            </para>
+            <para>
+            If you are nesting calls to the Execute and/or ExecuteTransaction these methods will reuse any already existing connection and/or transaction. The exception is
+            if you call ExecuteTransaction inside an Execute scope (which is not in turn inside an ExecuteTransaction scope), in this case a new connection will be opened
+            and the transaction created in the new connection.
+            </para>
+            <para>See the class definition <see cref="T:EPiServer.Data.IDatabaseHandler"/> for example usage.</para>
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Data.IDatabaseHandler.ExecuteTransaction``1(System.Func{``0})">
+            <summary>
+            Opens a connection and transaction and executes the <see cref="T:System.Func`1"/> with access to the open connection
+            </summary>
+            <typeparam name="TResult">A return type</typeparam>
+            <param name="action">The code that will execute within the connection and transaction</param>
+            <remarks>
+            <para>
+            This method will implicitly commit the current transaction and close the connection when exiting the current scope (or the outermost scope if nested). If the
+            action method throws any kind of exception, the transaction will be rolled back and the connection closed before the exception is rethrown.
+            </para>
+            <para>
+            If you are nesting calls to the Execute and/or ExecuteTransaction these methods will reuse any already existing connection and/or transaction. The exception is
+            if you call ExecuteTransaction inside an Execute scope (which is not in turn inside an ExecuteTransaction scope), in this case a new connection will be opened
+            and the transaction created in the new connection.
+            </para>
+            <para>See the class definition <see cref="T:EPiServer.Data.IDatabaseHandler"/> for example usage.</para>
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Data.IDatabaseHandler.ExecuteLocked(System.String,System.Action)">
+            <summary>
+            Executes an action with acuiring an exclusive lock for specified resource.
+            </summary>
+            <param name="resourceName">Name of the resource.</param>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:EPiServer.Data.IDatabaseHandler.ExecuteLocked``1(System.String,System.Func{``0})">
+            <summary>
+            Executes an action with acuiring an exclusive lock for specified resource.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="resourceName">Name of the resource.</param>
+            <param name="action">The action.</param>
+            <returns>
+            Action result.
+            </returns>
+        </member>
+        <member name="M:EPiServer.Data.IDatabaseHandler.CreateCommand">
+            <summary>
+            Creates a command and attaches it to the current connection
+            </summary>
+            <returns>A new command instance attached to the current database connection</returns>
+            <exception cref="T:System.InvalidOperationException">Will be thrown if no open connection exists, use <see cref="P:DbFactory"/> to create commands outside of a connection</exception>
+        </member>
+        <member name="M:EPiServer.Data.IDatabaseHandler.CreateCommand(System.String,System.Data.CommandType,System.Object[])">
+            <summary>
+            Creates a command with the given name and type, adding the parameter values and attaches it to the current connection.
+            </summary>
+            <param name="commandText">The stored procedure name or the SQL code to run.</param>
+            <param name="commandType">How to interpret the value supplied in the <paramref name="commandText"/> parameter.</param>
+            <param name="parameterValues">Any parameter values to pass to the stored procedure.</param>
+            <returns>A command for the current connection with the given text, type and parameter values set.</returns>
+            <exception cref="T:System.InvalidOperationException">Will be thrown if no open connection exists, use <see cref="P:DbFactory"/> to create commands outside of a connection</exception>
+        </member>
+        <member name="M:EPiServer.Data.IDatabaseHandler.EscapeWildcardChars(System.String)">
+            <summary>
+            Escapes wildcard characters such as "%", "_" and "[" for in literal strings used in SQL wildcard comparisons (eg LIKE)
+            </summary>
+            <param name="value">The string to escape</param>
+            <returns>The string with any wildcard characters escaped</returns>
+            <remarks>
+            Example usage of this method would for example be to make sure that "20%" does not get interpreted as a wildcard search for everything
+            starting with "20" when running your SQL code, in this example the string would be translated to "20[%]" for SQL Server. 
+            This method does not protect against SQL injection. Vulnerability to SQL injection is best avoided by always passing values using parameters.
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Data.IDatabaseHandler.GetProviderSpecificParameterName(System.String)">
+            <summary>
+            Gets the provider specific parameter name (will normally add a decoration to the parameter name, such as "@" on SQL Server)
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <returns>The decorated parameter name</returns>
+        </member>
+        <member name="P:EPiServer.Data.IDatabaseHandler.DbFactory">
+            <summary>
+            Gets the underlying factory class to used to create instances of data access classes
+            </summary>
+        </member>
+        <member name="P:EPiServer.Data.IDatabaseHandler.IsInTransaction">
+            <summary>
+            Determine if the current context is running under a transaction
+            </summary>
+        </member>
+        <member name="P:EPiServer.Data.IDatabaseHandler.Connection">
+            <summary>
+            Gets the current connection if one exists.
+            </summary>
+            <value>Will return null if no connection has been opened</value>
+            <remarks>The connection is considered read-only, do not make any changes to it such as opening or closing the connection since the database handler
+            will not detect these changes, leading to unexpected behaviour.</remarks>
+        </member>
+        <member name="P:EPiServer.Data.IDatabaseHandler.ConnectionSettings">
+            <summary>
+            Gets the connection settings that is being used by this instance.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Data.IAsyncDatabaseHandler.GetAsyncConnection(System.Boolean)">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Data.IAsyncDatabaseHandler.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Data.IAsyncDatabaseHandler.ExecuteTransactionAsync``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
         <member name="T:EPiServer.Data.Cache.CacheItem">
             <summary>
             Represents an item cached in a <see cref="T:EPiServer.Data.Cache.CacheProvider"/> derived class instance
@@ -3056,207 +3278,6 @@
             The provider supports removing entities
             </summary>
         </member>
-        <member name="T:EPiServer.Data.IDatabaseHandler">
-            <summary>
-            Interface for common database operations such as executing stored procedures and transaction management
-            </summary>
-            <remarks>
-            <para>
-            This interface is used in all APIs that require database access. The implementation of this interface is defined by <see cref="T:EPiServer.Data.DataInitialization"/> when
-            the application is starting. The IDatabaseHandler implementation is managed by the StructureMap container. It is configured to use a scope (HybridOrThreadLocal)
-            that will ensure that the same handler instance will be returned throughout each request.
-            </para>
-            <para>
-            Best practice is to never call into the database schema defined by EPiServer since backwards compatibility is not guaranteed. You should use this
-            interface when accessing custom tables and want to participate in the shared connnection and transaction handling when doing so.
-            </para>
-            <para>
-            The <see cref="M:Execute"/> and <see cref="M:ExecuteTransaction"/> methods should be the main way of executing your database code. Both methods
-            takes an Action method as their only argument and it is this method that should create and execute database commands. Always use 
-            <see cref="M:ExecuteTransaction"/> when calling stored procedures that does modifications to the database; using <see cref="M:Execute"/> for this
-            purpose could cause problems since the database handler has no way of detecting transactions implicitly created at the database level. There are two overloads
-            <see cref="M:Execute{TResult}"/> and <see cref="M:ExecuteTransaction{TResult}"/> that allow for a return value from the method in the argument.
-            </para>
-            <para>
-            Because multiple calls on the same connection are supported (Multiple Active Result Sets) it is very important to dispose any DbDataReader instances returned.
-            The preferred way of handling this is the using statement.
-            </para>
-            </remarks>
-            <example>
-            <para>
-            The following are examples on usage for the most common tasks. Note that the first three examples are using extension methods that are specific to calling stored procedures.
-            The extension methods shown here will create a command object, automatically resolve the parameters for the procedure by querying the database, set the parameter values 
-            to the values in the params argument and finally execute the command query.
-            </para>
-            <para>
-            Getting values using a data reader
-            </para>
-            <code source="../CodeSamples/EPiServer.Data/IDatabaseHandler.cs" region="GettingValuesUsingADataReader" lang="cs"/>
-            <para>
-            Executing a scalar query
-            </para>
-            <code source="../CodeSamples/EPiServer.Data/IDatabaseHandler.cs" region="ExecutingAScalarQuery" lang="cs"/>
-            <para>
-            Executing a non-query command
-            </para>
-            <code source="../CodeSamples/EPiServer.Data/IDatabaseHandler.cs" region="ExecutingANonQueryCommand" lang="cs"/>
-            <para>
-            Constructing a more complex database command
-            </para>
-            <code source="../CodeSamples/EPiServer.Data/IDatabaseHandler.cs" region="ConstructingAMoreComplexDatabaseCommand" lang="cs"/>
-            </example>
-        </member>
-        <member name="M:EPiServer.Data.IDatabaseHandler.Execute``1(System.Func{``0})">
-            <summary>
-            Opens a connection and executes the <see cref="T:System.Func`1"/> with access to the open connection
-            </summary>
-            <typeparam name="TResult">A return type</typeparam>
-            <param name="action">The code that will execute within the open connection</param>
-            <remarks>
-            <para>
-            This method will implicitly open and close the connection when exiting the current scope (or the outermost scope if nested). If the action method throws
-            any kind of exception, the connection will be closed before the exception is rethrown.
-            </para>
-            <para>
-            If you are nesting calls to the Execute and/or ExecuteTransaction methods these methods will reuse any already existing connection and/or transaction. The exception is
-            if you call ExecuteTransaction inside an Execute scope (which is not in turn inside an ExecuteTransaction scope), in this case a new connection will be opened
-            and the transaction created in the new connection.
-            </para>
-            <para>See the class definition <see cref="T:EPiServer.Data.IDatabaseHandler"/> for example usage.</para>
-            </remarks>
-        </member>
-        <member name="M:EPiServer.Data.IDatabaseHandler.Execute(System.Action)">
-            <summary>
-            Opens a connection and executes the <see cref="T:System.Action"/> with access to the open connection
-            </summary>
-            <param name="action">The code that will execute within the open connection</param>
-            <remarks>
-            <para>
-            This method will implicitly open and close the connection when exiting the current scope or the outermost scope if nested. If the action method throws
-            any kind of exception, the connection will be closed before the exception is rethrown.
-            </para>
-            <para>
-            If you are nesting calls to the Execute and/or ExecuteTransaction these methods will reuse any already existing connection and/or transaction. The exception is
-            if you call ExecuteTransaction inside an Execute scope (which is not in turn inside an ExecuteTransaction scope), in this case a new connection will be opened
-            and the transaction created in the new connection.
-            </para>
-            <para>See the class definition <see cref="T:EPiServer.Data.IDatabaseHandler"/> for example usage.</para>
-            </remarks>
-        </member>
-        <member name="M:EPiServer.Data.IDatabaseHandler.ExecuteTransaction(System.Action)">
-            <summary>
-            Opens a connection and transaction and executes the <see cref="T:System.Action"/> with access to the open connection
-            </summary>
-            <param name="action">The code that will execute within the connection and transaction</param>
-            <remarks>
-            <para>
-            This method will implicitly commit the current transaction and close the connection when exiting the current scope (or the outermost scope if nested). If the
-            action method throws any kind of exception, the transaction will be rolled back the connection closed before the exception is rethrown.
-            </para>
-            <para>
-            If you are nesting calls to the Execute and/or ExecuteTransaction these methods will reuse any already existing connection and/or transaction. The exception is
-            if you call ExecuteTransaction inside an Execute scope (which is not in turn inside an ExecuteTransaction scope), in this case a new connection will be opened
-            and the transaction created in the new connection.
-            </para>
-            <para>See the class definition <see cref="T:EPiServer.Data.IDatabaseHandler"/> for example usage.</para>
-            </remarks>
-        </member>
-        <member name="M:EPiServer.Data.IDatabaseHandler.ExecuteTransaction``1(System.Func{``0})">
-            <summary>
-            Opens a connection and transaction and executes the <see cref="T:System.Func`1"/> with access to the open connection
-            </summary>
-            <typeparam name="TResult">A return type</typeparam>
-            <param name="action">The code that will execute within the connection and transaction</param>
-            <remarks>
-            <para>
-            This method will implicitly commit the current transaction and close the connection when exiting the current scope (or the outermost scope if nested). If the
-            action method throws any kind of exception, the transaction will be rolled back and the connection closed before the exception is rethrown.
-            </para>
-            <para>
-            If you are nesting calls to the Execute and/or ExecuteTransaction these methods will reuse any already existing connection and/or transaction. The exception is
-            if you call ExecuteTransaction inside an Execute scope (which is not in turn inside an ExecuteTransaction scope), in this case a new connection will be opened
-            and the transaction created in the new connection.
-            </para>
-            <para>See the class definition <see cref="T:EPiServer.Data.IDatabaseHandler"/> for example usage.</para>
-            </remarks>
-        </member>
-        <member name="M:EPiServer.Data.IDatabaseHandler.ExecuteLocked(System.String,System.Action)">
-            <summary>
-            Executes an action with acuiring an exclusive lock for specified resource.
-            </summary>
-            <param name="resourceName">Name of the resource.</param>
-            <param name="action">The action.</param>
-        </member>
-        <member name="M:EPiServer.Data.IDatabaseHandler.ExecuteLocked``1(System.String,System.Func{``0})">
-            <summary>
-            Executes an action with acuiring an exclusive lock for specified resource.
-            </summary>
-            <typeparam name="TResult">The type of the result.</typeparam>
-            <param name="resourceName">Name of the resource.</param>
-            <param name="action">The action.</param>
-            <returns>
-            Action result.
-            </returns>
-        </member>
-        <member name="M:EPiServer.Data.IDatabaseHandler.CreateCommand">
-            <summary>
-            Creates a command and attaches it to the current connection
-            </summary>
-            <returns>A new command instance attached to the current database connection</returns>
-            <exception cref="T:System.InvalidOperationException">Will be thrown if no open connection exists, use <see cref="P:DbFactory"/> to create commands outside of a connection</exception>
-        </member>
-        <member name="M:EPiServer.Data.IDatabaseHandler.CreateCommand(System.String,System.Data.CommandType,System.Object[])">
-            <summary>
-            Creates a command with the given name and type, adding the parameter values and attaches it to the current connection.
-            </summary>
-            <param name="commandText">The stored procedure name or the SQL code to run.</param>
-            <param name="commandType">How to interpret the value supplied in the <paramref name="commandText"/> parameter.</param>
-            <param name="parameterValues">Any parameter values to pass to the stored procedure.</param>
-            <returns>A command for the current connection with the given text, type and parameter values set.</returns>
-            <exception cref="T:System.InvalidOperationException">Will be thrown if no open connection exists, use <see cref="P:DbFactory"/> to create commands outside of a connection</exception>
-        </member>
-        <member name="M:EPiServer.Data.IDatabaseHandler.EscapeWildcardChars(System.String)">
-            <summary>
-            Escapes wildcard characters such as "%", "_" and "[" for in literal strings used in SQL wildcard comparisons (eg LIKE)
-            </summary>
-            <param name="value">The string to escape</param>
-            <returns>The string with any wildcard characters escaped</returns>
-            <remarks>
-            Example usage of this method would for example be to make sure that "20%" does not get interpreted as a wildcard search for everything
-            starting with "20" when running your SQL code, in this example the string would be translated to "20[%]" for SQL Server. 
-            This method does not protect against SQL injection. Vulnerability to SQL injection is best avoided by always passing values using parameters.
-            </remarks>
-        </member>
-        <member name="M:EPiServer.Data.IDatabaseHandler.GetProviderSpecificParameterName(System.String)">
-            <summary>
-            Gets the provider specific parameter name (will normally add a decoration to the parameter name, such as "@" on SQL Server)
-            </summary>
-            <param name="name">The name of the parameter</param>
-            <returns>The decorated parameter name</returns>
-        </member>
-        <member name="P:EPiServer.Data.IDatabaseHandler.DbFactory">
-            <summary>
-            Gets the underlying factory class to used to create instances of data access classes
-            </summary>
-        </member>
-        <member name="P:EPiServer.Data.IDatabaseHandler.IsInTransaction">
-            <summary>
-            Determine if the current context is running under a transaction
-            </summary>
-        </member>
-        <member name="P:EPiServer.Data.IDatabaseHandler.Connection">
-            <summary>
-            Gets the current connection if one exists.
-            </summary>
-            <value>Will return null if no connection has been opened</value>
-            <remarks>The connection is considered read-only, do not make any changes to it such as opening or closing the connection since the database handler
-            will not detect these changes, leading to unexpected behaviour.</remarks>
-        </member>
-        <member name="P:EPiServer.Data.IDatabaseHandler.ConnectionSettings">
-            <summary>
-            Gets the connection settings that is being used by this instance.
-            </summary>
-        </member>
         <member name="T:EPiServer.Data.IDatabaseHandlerExtensions">
             <summary>
             Extension methods for <see cref="T:EPiServer.Data.IDatabaseHandler"/> adding some often used functionality
@@ -3386,11 +3407,19 @@
             This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
             Helper class that wraps a connection and a transaction.
             </summary>
+            <exclude/>
+        </member>
+        <member name="T:EPiServer.Data.Providers.IAsyncConnectionContext">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
+            <exclude />
         </member>
         <member name="T:EPiServer.Data.Providers.IConnectionContext">
             <summary>
             This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
             </summary>
+            <exclude/>
         </member>
         <member name="M:EPiServer.Data.Providers.IConnectionContext.BeginTransaction">
             <summary>
@@ -3437,10 +3466,20 @@
             This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
             </summary>
         </member>
+        <member name="M:EPiServer.Data.Providers.IAsyncConnectionContext.OpenConnectionAsync">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
         <member name="M:EPiServer.Data.Providers.ConnectionContext.OpenConnection">
             <summary>
             This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
             Open a connection to the database
+            </summary>
+        </member>
+        <member name="M:EPiServer.Data.Providers.ConnectionContext.OpenConnectionAsync">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
             </summary>
         </member>
         <member name="M:EPiServer.Data.Providers.ConnectionContext.CloseConnection">
@@ -3485,12 +3524,20 @@
             This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
             Helper class to control the scope of a connection, built for the "using-pattern".
             </summary>
+            <exclude/>
+        </member>
+        <member name="T:EPiServer.Data.Providers.IAsyncConnectionScope">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
+            <exclude />
         </member>
         <member name="T:EPiServer.Data.Providers.IConnectionScope">
             <summary>
             This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
             Helper class to handle the scope of a connection to the database
             </summary>
+            <exclude/>
         </member>
         <member name="M:EPiServer.Data.Providers.IConnectionScope.Complete">
             <summary>
@@ -3510,12 +3557,22 @@
             Determines if this scope owns the connection and should close it
             </summary>
         </member>
+        <member name="P:EPiServer.Data.Providers.IAsyncConnectionScope.Context">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
         <member name="M:EPiServer.Data.Providers.ConnectionScope.#ctor(EPiServer.Data.Providers.IConnectionContext,System.Boolean)">
             <summary>
             This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
             </summary>
             <param name="context">The connection context on which the scope operates</param>
             <param name="isOwner">If this scope is the owner of connection</param>
+        </member>
+        <member name="M:EPiServer.Data.Providers.ConnectionScope.#ctor(EPiServer.Data.Providers.IConnectionContext,System.Boolean,System.Action)">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
         </member>
         <member name="M:EPiServer.Data.Providers.ConnectionScope.Complete">
             <summary>
@@ -3536,6 +3593,11 @@
             Determines if the callee owns the connection/transaction and should close it.
             </summary>
         </member>
+        <member name="P:EPiServer.Data.Providers.ConnectionScope.EPiServer#Data#Providers#IAsyncConnectionScope#Context">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
         <member name="P:EPiServer.Data.Providers.ConnectionScope.Context">
             <summary>
             This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
@@ -3546,6 +3608,7 @@
             <summary>
             This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
             </summary>
+            <exclude/>
         </member>
         <member name="M:EPiServer.Data.Providers.IDatabaseFactory.CreateDefaultHandler">
             <summary>
@@ -3569,6 +3632,7 @@
             <summary>
             This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
             </summary>
+            <exclude/>
         </member>
         <member name="M:EPiServer.Data.Providers.RetryPolicy.Execute``1(System.Func{``0})">
             <summary>
@@ -3578,10 +3642,18 @@
             <param name="method">The function to run</param>
             <returns>The result</returns>
         </member>
+        <member name="M:EPiServer.Data.Providers.RetryPolicy.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
         <member name="P:EPiServer.Data.Providers.RetryPolicy.NoRetries">
             <summary>
             A policy that just executes whatever method
             </summary>
+        </member>
+        <member name="M:EPiServer.Data.Providers.NoRetriesPolicy.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <exclude />
         </member>
         <member name="T:EPiServer.Data.Providers.ParameterDiscovery.CachingMechanism">
             <devdoc>
@@ -3662,6 +3734,7 @@
             This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
             Known transient SQL errors
             </summary>
+            <exclude/>
         </member>
         <member name="F:EPiServer.Data.Providers.SqlTransientErrors._executeRetryable">
             <summary>
@@ -3679,6 +3752,7 @@
             <summary>
             This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
             </summary>
+            <exclude/>
         </member>
         <member name="M:EPiServer.Data.Providers.SqlDatabaseFactory.CreateDefaultHandler">
             <summary>
@@ -3699,6 +3773,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:EPiServer.Data.Providers.SqlDatabaseFactory.EPiServer#Data#IAsyncDatabaseFactory#CreateDefaultHandler">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
         <member name="P:EPiServer.Data.Providers.SqlDatabaseFactory.CurrentHandler">
             <summary>
             The current database handler
@@ -3709,6 +3788,7 @@
             This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
             </summary>
             <remarks>Implements IDatabaseHandler and is not thread-safe, purpose is to use it during a session for access to SQL Server.</remarks>
+            <exclude/>
         </member>
         <member name="M:EPiServer.Data.Providers.SqlDatabaseHandler.#ctor(System.Configuration.ConnectionStringSettings,System.Int32,System.TimeSpan,System.TimeSpan)">
             <summary>
@@ -3718,6 +3798,26 @@
             <param name="retries">The number of retries, 0 means no retries</param>
             <param name="retryDelay">The delay between each retry</param>
             <param name="databaseQueryTimeout">The timeout for executing commands</param>
+        </member>
+        <member name="M:EPiServer.Data.Providers.SqlDatabaseHandler.ExecuteAsync(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Data.Providers.SqlDatabaseHandler.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Data.Providers.SqlDatabaseHandler.ExecuteTransactionAsync(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Data.Providers.SqlDatabaseHandler.ExecuteTransactionAsync``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
         </member>
         <member name="M:EPiServer.Data.Providers.SqlDatabaseHandler.Execute``1(System.Func{``0})">
             <summary>
@@ -3759,6 +3859,11 @@
             </summary>
             <param name="name"></param>
             <returns></returns>
+        </member>
+        <member name="M:EPiServer.Data.Providers.SqlDatabaseHandler.GetAsyncConnection(System.Boolean)">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
         </member>
         <member name="M:EPiServer.Data.Providers.SqlDatabaseHandler.GetConnection(System.Boolean)">
             <summary>
@@ -3889,6 +3994,7 @@
             This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
             Helper class to handle connection retry
             </summary>
+            <exclude/>
         </member>
         <member name="M:EPiServer.Data.Providers.SqlTransientErrorsRetryPolicy.#ctor(System.Collections.Generic.IEnumerable{System.Int32},System.Int32,System.TimeSpan)">
             <summary>
@@ -3905,6 +4011,11 @@
             <typeparam name="TResult"></typeparam>
             <param name="method"></param>
             <returns></returns>
+        </member>
+        <member name="M:EPiServer.Data.Providers.SqlTransientErrorsRetryPolicy.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            This class supports the EPiServer infrastructure and is not intended to be used directly from your code.
+            </summary>
         </member>
         <member name="M:EPiServer.Data.Providers.SqlTransientErrorsRetryPolicy.IsTransientException(System.Data.Common.DbException)">
             <summary>
@@ -5345,6 +5456,13 @@
             <param name="config">A <see cref="T:System.Configuration.Configuration"/></param>
             <param name="modifyConnectionStringNameForTest">Pass true if the connection string name should be modified when running in test mode</param>
         </member>
+        <member name="M:EPiServer.Data.Configuration.EPiServerDataStoreSection.ResolveConnectionStringSettings">
+            <summary>
+            Resolves connection strings
+            </summary>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Thrown if connection string was not found</exception>
+            <returns>Connection string</returns>
+        </member>
         <member name="M:EPiServer.Data.Configuration.EPiServerDataStoreSection.GetCurrentSiteDataSettings">
             <summary>
             Gets the data settings.
@@ -5355,12 +5473,12 @@
             <summary>
             Gets and sets the current configuration to use
             </summary>
+            <exclude/>
         </member>
         <member name="P:EPiServer.Data.Configuration.EPiServerDataStoreSection.Instance">
             <summary>
             Gets the instance of the <see cref="T:EPiServer.Data.Configuration.EPiServerDataStoreSection"/> section
             </summary>
-            <remarks>Returns null if the section isn't found</remarks>
         </member>
         <member name="P:EPiServer.Data.Configuration.EPiServerDataStoreSection.DataStoreSettings">
             <summary>
