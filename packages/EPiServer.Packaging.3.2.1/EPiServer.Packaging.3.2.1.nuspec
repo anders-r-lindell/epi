@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>EPiServer.Packaging</id>
+    <version>3.2.1</version>
+    <title>EPiServer Add-On Store Platform</title>
+    <authors>EPiServer AB</authors>
+    <owners>EPiServer AB</owners>
+    <projectUrl>http://www.episerver.com/</projectUrl>
+    <iconUrl>http://www.episerver.com/Framework/Styles/Images/Products/Integration.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides core components for the EPiServer Add-on store</description>
+    <releaseNotes />
+    <tags>EPiServer-Platform</tags>
+    <dependencies>
+      <dependency id="EPiServer.Framework" version="[8.0.0, 9.0)" />
+      <dependency id="Nuget.Core" version="[2.5, 2.8)" />
+    </dependencies>
+  </metadata>
+</package>

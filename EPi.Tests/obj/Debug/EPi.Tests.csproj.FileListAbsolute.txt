@@ -1,0 +1,4 @@
+C:\Projects\EPi\EPi.Tests\bin\Debug\EPi.Tests.dll
+C:\Projects\EPi\EPi.Tests\bin\Debug\EPi.Tests.pdb
+C:\Projects\EPi\EPi.Tests\obj\Debug\EPi.Tests.dll
+C:\Projects\EPi\EPi.Tests\obj\Debug\EPi.Tests.pdb

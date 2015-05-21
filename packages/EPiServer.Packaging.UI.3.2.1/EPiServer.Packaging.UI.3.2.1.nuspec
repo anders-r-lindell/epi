@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>EPiServer.Packaging.UI</id>
+    <version>3.2.1</version>
+    <title>EPiServer Add-On Store UI</title>
+    <authors>EPiServer AB</authors>
+    <owners>EPiServer AB</owners>
+    <projectUrl>http://www.episerver.com/</projectUrl>
+    <iconUrl>http://www.episerver.com/Framework/Styles/Images/Products/Integration.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides the user interface for the EPiServer Add-on store</description>
+    <releaseNotes />
+    <tags>EPiServer-UI</tags>
+    <dependencies>
+      <dependency id="EPiServer.Packaging" version="3.2.1" />
+      <dependency id="EPiServer.CMS.UI.Core" version="[8.0.0, 9.0)" />
+      <dependency id="Nuget.Core" version="[2.5, 2.8)" />
+    </dependencies>
+  </metadata>
+</package>

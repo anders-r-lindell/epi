@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>EPiServer.Search</id>
+    <version>7.7.1</version>
+    <title>EPiServer Search</title>
+    <authors>EPiServer AB</authors>
+    <owners>EPiServer</owners>
+    <licenseUrl>http://www.episerver.com/eula/</licenseUrl>
+    <projectUrl>http://www.episerver.com/web-content-management/</projectUrl>
+    <iconUrl>http://www.episerver.com/Framework/Styles/Images/Products/Integration.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>EPiServer Search.</description>
+    <tags>Search</tags>
+    <dependencies>
+      <dependency id="Lucene.Net" version="[3.0.3, 4.0)" />
+      <dependency id="EPiServer.Logging.Log4Net" version="(, 2.0)" />
+      <dependency id="EPiServer.Framework" version="[7.16, 9.0)" />
+    </dependencies>
+  </metadata>
+</package>

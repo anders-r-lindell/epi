@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>EPiServer.Logging.Log4Net</id>
+    <version>1.0.0</version>
+    <authors>EPiServer AB</authors>
+    <owners>EPiServer</owners>
+    <licenseUrl>http://www.episerver.com/eula/</licenseUrl>
+    <projectUrl>http://www.episerver.com/web-content-management/</projectUrl>
+    <iconUrl>http://www.episerver.com/Framework/Styles/Images/Products/Integration.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>EPiServer Logging for log4net</description>
+    <tags>EPiServer Logging</tags>
+    <dependencies>
+      <dependency id="log4net" version="[1.2.10]" />
+      <dependency id="EPiServer.Framework" version="[7.16.0, 9.0)" />
+    </dependencies>
+  </metadata>
+</package>

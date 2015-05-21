@@ -1,0 +1,650 @@
+﻿﻿2015-05-20 15:17:18,000 [26] ERROR EPiServer.Framework.Initialization.InitializationEngine: Initialize action failed for Initialize on class EPiServer.Data.DataInitialization, EPiServer.Data, Version=8.0.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7
+System.NotSupportedException: The database has not been updated to the version '7016.0', current database version is '7006.0'. Update the database by running the cmdlet 'update-epidatabase' in the package manager console.
+   at EPiServer.Data.DatabaseVersionValidator.ThrowUpdateDatabaseException(Version databaseVersion, Version codeVersion)
+   at EPiServer.Data.DatabaseVersionValidator.ValidateDatabaseVersion(Version supportedVersion)
+   at EPiServer.Data.DataInitialization.Initialize(InitializationEngine context)
+   at EPiServer.Framework.Initialization.ModuleNode.Execute(Action a, String key)
+   at EPiServer.Framework.Initialization.InitializationEngine.InitializeModules()
+System.NotSupportedException: The database has not been updated to the version '7016.0', current database version is '7006.0'. Update the database by running the cmdlet 'update-epidatabase' in the package manager console.
+   at EPiServer.Data.DatabaseVersionValidator.ThrowUpdateDatabaseException(Version databaseVersion, Version codeVersion)
+   at EPiServer.Data.DatabaseVersionValidator.ValidateDatabaseVersion(Version supportedVersion)
+   at EPiServer.Data.DataInitialization.Initialize(InitializationEngine context)
+   at EPiServer.Framework.Initialization.ModuleNode.Execute(Action a, String key)
+   at EPiServer.Framework.Initialization.InitializationEngine.InitializeModules()
+2015-05-20 15:20:16,303 [24] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:20:16,317 [24] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:20:27,525 [25] ERROR EPiServer.Global: 1.2.5 Unhandled exception in ASP.NET
+System.Configuration.ConfigurationErrorsException: The connection name 'LocalSqlServer' was not found in the applications configuration or the connection string is empty. (C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config line 252) ---> System.Configuration.Provider.ProviderException: The connection name 'LocalSqlServer' was not found in the applications configuration or the connection string is empty.
+   at System.Web.Util.SecUtility.GetConnectionString(NameValueCollection config)
+   at System.Web.Profile.SqlProfileProvider.Initialize(String name, NameValueCollection config)
+   at System.Web.Configuration.ProvidersHelper.InstantiateProvider(ProviderSettings providerSettings, Type providerType)
+   --- End of inner exception stack trace ---
+   at System.Web.Profile.ProfileBase.InitializeStatic()
+   at System.Web.Profile.ProfileBase.Create(String username, Boolean isAuthenticated)
+   at System.Web.HttpContext.get_Profile()
+   at EPiServer.Personalization.EPiServerProfile.get_Enabled()
+   at EPiServer.Security.WindowsMembershipProvider.GetUser(String username, Boolean userIsOnline)
+   at EPiServer.Security.MultiplexingMembershipProvider.FindMembershipUser(String username)
+   at EPiServer.Security.MultiplexingMembershipProvider.get_CurrentMembershipUser()
+   at EPiServer.Security.MultiplexingMembershipProvider.ValidateUser(String username, String password)
+   at System.Web.UI.WebControls.Login.AuthenticateUsingMembershipProvider(AuthenticateEventArgs e)
+   at System.Web.UI.WebControls.Login.AttemptLogin()
+   at System.Web.UI.WebControls.Login.OnBubbleEvent(Object source, EventArgs e)
+   at System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.util_login_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\ac4b9f7f\24569d74\App_Web_dhm0cl4n.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+System.Configuration.ConfigurationErrorsException: The connection name 'LocalSqlServer' was not found in the applications configuration or the connection string is empty. (C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config line 252) ---> System.Configuration.Provider.ProviderException: The connection name 'LocalSqlServer' was not found in the applications configuration or the connection string is empty.
+   at System.Web.Util.SecUtility.GetConnectionString(NameValueCollection config)
+   at System.Web.Profile.SqlProfileProvider.Initialize(String name, NameValueCollection config)
+   at System.Web.Configuration.ProvidersHelper.InstantiateProvider(ProviderSettings providerSettings, Type providerType)
+   --- End of inner exception stack trace ---
+   at System.Web.Profile.ProfileBase.InitializeStatic()
+   at System.Web.Profile.ProfileBase.Create(String username, Boolean isAuthenticated)
+   at System.Web.HttpContext.get_Profile()
+   at EPiServer.Personalization.EPiServerProfile.get_Enabled()
+   at EPiServer.Security.WindowsMembershipProvider.GetUser(String username, Boolean userIsOnline)
+   at EPiServer.Security.MultiplexingMembershipProvider.FindMembershipUser(String username)
+   at EPiServer.Security.MultiplexingMembershipProvider.get_CurrentMembershipUser()
+   at EPiServer.Security.MultiplexingMembershipProvider.ValidateUser(String username, String password)
+   at System.Web.UI.WebControls.Login.AuthenticateUsingMembershipProvider(AuthenticateEventArgs e)
+   at System.Web.UI.WebControls.Login.AttemptLogin()
+   at System.Web.UI.WebControls.Login.OnBubbleEvent(Object source, EventArgs e)
+   at System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.util_login_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\root\ac4b9f7f\24569d74\App_Web_dhm0cl4n.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-05-20 15:20:48,411 [17] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:20:48,426 [17] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:21:26,451 [25] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:21:26,456 [25] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:21:28,435 [22] ERROR EPiServer.Global: 1.2.5 Unhandled exception in ASP.NET
+System.Web.HttpException (0x80004005): The file '/link/43F936C99B234EA397B261C538AD07C9.aspx' does not exist.
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.Routing.PageRouteHandler.GetHttpHandler(RequestContext requestContext)
+   at System.Web.Routing.UrlRoutingModule.PostResolveRequestCache(HttpContextBase context)
+   at System.Web.HttpApplication.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+System.Web.HttpException (0x80004005): The file '/link/43F936C99B234EA397B261C538AD07C9.aspx' does not exist.
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.Routing.PageRouteHandler.GetHttpHandler(RequestContext requestContext)
+   at System.Web.Routing.UrlRoutingModule.PostResolveRequestCache(HttpContextBase context)
+   at System.Web.HttpApplication.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-05-20 15:21:58,603 [22] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:21:58,619 [22] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:22:30,817 [24] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:22:30,834 [24] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:23:02,978 [24] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:23:02,994 [24] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:23:53,264 [7] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:23:53,289 [7] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:24:25,434 [6] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:24:25,446 [6] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:24:57,554 [7] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:24:57,568 [7] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:25:29,717 [18] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:25:29,731 [18] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:26:01,823 [11] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:26:01,840 [11] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:26:33,969 [23] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:26:33,982 [23] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:27:06,115 [24] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:27:06,132 [24] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:27:38,326 [26] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:27:38,341 [26] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:29:43,373 [26] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:29:43,377 [26] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:30:23,108 [12] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:30:23,120 [12] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:32:02,896 [24] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:32:02,905 [24] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:32:35,056 [7] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:32:35,072 [7] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:33:07,252 [22] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:33:07,263 [22] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:34:56,698 [42] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:34:56,707 [42] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:35:28,867 [39] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:35:28,882 [39] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:36:01,036 [44] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:36:01,047 [44] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:38:30,241 [45] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:38:30,254 [45] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:39:02,439 [45] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:39:02,454 [45] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:39:34,598 [45] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:39:34,602 [45] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:40:06,735 [57] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:40:06,744 [57] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:40:38,891 [39] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:40:38,906 [39] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:41:11,052 [56] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:41:11,067 [56] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:41:43,175 [39] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:41:43,191 [39] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:42:15,310 [45] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:42:15,314 [45] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:42:47,514 [46] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:42:47,529 [46] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:43:19,644 [46] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:43:19,653 [46] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:43:51,811 [57] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:43:51,826 [57] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:44:23,942 [45] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:44:23,959 [45] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:45:14,804 [54] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:45:14,808 [54] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:45:46,927 [30] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:45:46,933 [30] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:46:38,789 [54] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:46:38,793 [54] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:47:10,951 [41] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:47:10,965 [41] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:47:43,137 [54] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:47:43,149 [54] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:48:15,233 [25] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:48:15,243 [25] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:48:47,348 [56] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:48:47,362 [56] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:49:19,573 [48] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:49:19,578 [48] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:49:51,703 [41] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:49:51,718 [41] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:50:23,915 [48] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:50:23,928 [48] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:50:56,100 [41] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:50:56,113 [41] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:51:28,292 [41] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:51:28,303 [41] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:52:00,451 [53] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:52:00,456 [53] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:52:32,579 [25] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:52:32,585 [25] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:53:04,771 [54] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:53:04,776 [54] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:53:36,887 [46] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:53:36,903 [46] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:54:09,049 [33] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:54:09,054 [33] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:54:44,835 [61] ERROR EPiServer.Global: 1.2.5 Unhandled exception in ASP.NET
+System.Web.HttpException (0x80004005): The file '/link/43F936C99B234EA397B261C538AD07C9.aspx' does not exist.
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.Routing.PageRouteHandler.GetHttpHandler(RequestContext requestContext)
+   at System.Web.Routing.UrlRoutingModule.PostResolveRequestCache(HttpContextBase context)
+   at System.Web.HttpApplication.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+System.Web.HttpException (0x80004005): The file '/link/43F936C99B234EA397B261C538AD07C9.aspx' does not exist.
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.Routing.PageRouteHandler.GetHttpHandler(RequestContext requestContext)
+   at System.Web.Routing.UrlRoutingModule.PostResolveRequestCache(HttpContextBase context)
+   at System.Web.HttpApplication.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2015-05-20 15:54:54,377 [33] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:54:54,394 [33] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:55:26,545 [69] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:55:26,563 [69] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:55:58,719 [74] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:55:58,737 [74] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:56:30,866 [33] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:56:30,882 [33] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:57:02,988 [56] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:57:03,005 [56] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:57:35,135 [73] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:57:35,144 [73] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:58:07,319 [44] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:58:07,332 [44] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:58:39,472 [68] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:58:39,487 [68] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:59:11,627 [54] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:59:11,637 [54] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 15:59:43,773 [64] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 15:59:43,784 [64] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:00:15,924 [41] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:00:15,934 [41] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:00:48,071 [74] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:00:48,087 [74] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:01:20,198 [33] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:01:20,209 [33] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:01:52,346 [27] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:01:52,355 [27] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:02:24,551 [68] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:02:24,571 [68] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:02:56,692 [63] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:02:56,708 [63] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:03:28,842 [66] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:03:28,861 [66] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:04:00,973 [27] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:04:00,980 [27] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:04:33,067 [48] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:04:33,081 [48] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:05:05,198 [64] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:05:05,210 [64] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:05:37,321 [65] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:05:37,335 [65] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:06:09,469 [69] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:06:09,476 [69] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:06:41,634 [73] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:06:41,649 [73] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:07:13,782 [72] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:07:13,801 [72] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:07:45,928 [53] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:07:45,936 [53] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:08:18,079 [60] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:08:18,094 [60] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:08:50,239 [69] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:08:50,252 [69] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:09:22,394 [25] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:09:22,416 [25] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:09:54,544 [33] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:09:54,547 [33] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:10:26,685 [69] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:10:26,692 [69] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:10:58,828 [62] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:10:58,838 [62] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:11:30,948 [63] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:11:30,962 [63] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:12:03,082 [62] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:12:03,088 [62] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:12:35,228 [67] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:12:35,237 [67] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:13:07,315 [65] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:13:07,326 [65] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:13:39,432 [33] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:13:39,439 [33] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:14:11,518 [54] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:14:11,526 [54] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:14:43,640 [65] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:14:43,652 [65] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:15:15,756 [41] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:15:15,765 [41] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:15:47,854 [64] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:15:47,861 [64] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:16:19,967 [62] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:16:19,976 [62] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:16:52,076 [44] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:16:52,085 [44] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:17:24,200 [69] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:17:24,215 [69] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:17:56,360 [56] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:17:56,364 [56] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:18:28,511 [70] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:18:28,519 [70] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:19:00,629 [44] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:19:00,636 [44] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:19:32,714 [60] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:19:32,723 [60] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:20:04,859 [30] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:20:04,863 [30] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:20:36,981 [54] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:20:36,988 [54] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:21:09,093 [66] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:21:09,097 [66] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:21:41,178 [25] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:21:41,192 [25] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:22:13,304 [48] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:22:13,308 [48] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:22:45,432 [66] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:22:45,446 [66] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:23:17,585 [30] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:23:17,589 [30] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:23:49,700 [66] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:23:49,709 [66] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:24:21,858 [46] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:24:21,873 [46] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:24:54,025 [30] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:24:54,030 [30] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 16:25:26,141 [46] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 16:25:26,153 [46] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
+2015-05-20 19:25:57,715 [64] ERROR SearchSettings: Update batch could not be sent to service uri 'http://localhost:62516/IndexingService/IndexingService.svc/update/?accesskey=local'. Message: 'Unable to connect to the remote server   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at EPiServer.Search.RequestHandler.MakeHttpRequest(String url, NamedIndexingServiceElement namedIndexingServiceElement, String method, Stream postData, Action`1 responseHandler)
+   at EPiServer.Search.RequestHandler.SendRequest(SyndicationFeed feed, String namedIndexingService, Collection`1 ids)'
+2015-05-20 19:25:57,723 [64] ERROR SearchSettings: Send batch for named index 'serviceName' failed. Items are left in queue.
