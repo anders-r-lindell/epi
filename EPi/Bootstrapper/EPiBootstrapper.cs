@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using EPi.Models.ViewModels;
 using EPiServer;
 using EPiServer.Configuration;
 using EPiServer.Construction;
@@ -16,6 +17,8 @@ namespace EPi.Bootstrapper
         public static void Configure(ContainerBuilder builder)
         {
             RegisterServiceLocatorDependencies(builder);
+
+            builder.RegisterType<LayoutViewModel>().InstancePerLifetimeScope();
 
             builder.RegisterControllers(typeof(EPiBootstrapper).Assembly);
             builder.RegisterModule<AutofacWebTypesModule>();

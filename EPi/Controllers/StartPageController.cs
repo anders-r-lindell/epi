@@ -2,11 +2,10 @@
 using CqFramework;
 using EPi.Models.Pages;
 using EPi.Query;
-using EPiServer.Web.Mvc;
 
 namespace EPi.Controllers
 {
-    public class StartPageController : PageController<StartPage>
+    public class StartPageController : PageControllerBase<StartPage>
     {
         private readonly ICommandDispatcher commandDispatcher;
         private readonly IQueryProcessor queryProcessor;
